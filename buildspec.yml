@@ -24,6 +24,8 @@ phases:
       - trivy -f json -o results.json --exit-code 0 --severity LOW --quiet --auto-refresh $REPOSITORY_URI:$TAG
       - trivy -f json -o results.json --exit-code 1 --severity MEDIUM,HIGH,CRITICAL --quiet --auto-refresh $REPOSITORY_URI:$TAG
       - echo trivy scan completed on `date`
+      - trivy image -f json -o results.json $REPOSITORY_URI:$TAG
+
 
   post_build:
     commands:

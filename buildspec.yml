@@ -11,7 +11,7 @@ phases:
       - apt install rpm -y
       - pip3 install boto3
       - wget https://github.com/aquasecurity/trivy/releases/download/v0.24.4/trivy_0.24.4_Linux-64bit.deb
-      - sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+      - sudo dpkg -i trivy_0.24.4_Linux-64bit.deb
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"

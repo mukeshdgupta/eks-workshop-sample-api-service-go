@@ -10,8 +10,11 @@ phases:
       - apt-get update && apt-get -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
       - apt install rpm -y
       - pip3 install boto3
-      - wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
-      - dpkg -i trivy_0.19.2_Linux-64bit.deb
+      - wget https://github.com/aquasecurity/trivy/releases/download/v0.24.4/trivy_0.24.4_Linux-64bit.deb
+      - dpkg -i trivy_0.24.4_Linux-64bit.deb
+      - sudo curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - chmod 700 get_helm.sh
+      - ./get_helm.sh
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
